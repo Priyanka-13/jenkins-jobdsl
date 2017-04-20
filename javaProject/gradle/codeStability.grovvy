@@ -1,0 +1,31 @@
+def thr = Thread.currentThread()
+def build = thr.executable
+// get build parameters
+def buildVariablesMap = build.buildVariables
+String appurl = buildVariablesMap?.AppURL
+String branch = buildVariablesMap?.Branch
+
+//println appurl
+
+/* get all environment variables for the build
+def buildEnvVarsMap = build.envVars
+String jobName = buildEnvVarsMap?.JOB_NAME
+println jobName
+*/
+
+ job('DSLAPICodeStability') {
+  description('Code Stability for API')
+  logRotator {
+        daysToKeep(60)
+        numToKeep(20)
+        artifactDaysToKeep(1)
+    }
+  scm {
+     git {
+      remote {
+        url("$appurl")
+      }
+      branch("$branch")
+     }
+   }  
+}
