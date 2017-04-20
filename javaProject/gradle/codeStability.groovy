@@ -28,7 +28,7 @@ println jobName
       remote {
         url("$appurl")
       }
-      branch("*/$branch")
+      branch("*/master")
      }
    }  
   steps {
