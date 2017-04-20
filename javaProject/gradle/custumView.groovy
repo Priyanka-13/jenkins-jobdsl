@@ -6,7 +6,7 @@ String projectname = buildVariablesMap?.ProjectName
 
 listView("${projectname}-Jobs") {
             jobs {
-                names("${projectname}CodeStability")
+                names("${projectname}CodeStability", "${projectname}CodeDeploy")
             }
             columns {
                 status()
