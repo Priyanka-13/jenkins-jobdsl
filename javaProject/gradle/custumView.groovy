@@ -4,9 +4,7 @@ def build = thr.executable
 def buildVariablesMap = build.buildVariables
 String projectname = buildVariablesMap?.ProjectName
 
-nestedView("${projectname}-View") {
-    views {
-        listView("${projectname}-WAR") {
+listView("${projectname}-Jobs") {
             jobs {
                 names("${projectname}CodeStability")
             }
@@ -16,8 +14,5 @@ nestedView("${projectname}-View") {
                 name()
                 lastSuccess()
                 lastFailure()
-            }
         }
-    }
-}
-
+   }
