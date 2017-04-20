@@ -28,9 +28,9 @@ println jobName
       remote {
         url("$appurl")
       }
-      branch("*/master")
+      branch("*/sprint2")
      }
-   }  
+   }
   steps {
         gradle {
 
