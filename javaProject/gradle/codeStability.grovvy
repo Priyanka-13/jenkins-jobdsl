@@ -2,8 +2,11 @@ def thr = Thread.currentThread()
 def build = thr.executable
 // get build parameters
 def buildVariablesMap = build.buildVariables
+String projectname = buildVariablesMap?.ProjectName
 String appurl = buildVariablesMap?.AppURL
 String branch = buildVariablesMap?.Branch
+String gradletask = buildVariablesMap?.GradleTask
+
 
 //println appurl
 
@@ -13,7 +16,7 @@ String jobName = buildEnvVarsMap?.JOB_NAME
 println jobName
 */
 
- job('DSLAPICodeStability') {
+ job("${projectname}CodeStability") {
   description('Code Stability for API')
   logRotator {
         daysToKeep(60)
@@ -28,4 +31,14 @@ println jobName
       branch("$branch")
      }
    }  
+  steps {
+        gradle {
+
+           useWrapper false
+            gradleName ( 'gradle-3.5' )
+            tasks ( "$gradletask" )
+            buildFile ( 'build.gradle' )
+
+        }
+    }
 }
