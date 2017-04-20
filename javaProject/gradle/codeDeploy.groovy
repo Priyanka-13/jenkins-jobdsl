@@ -5,8 +5,8 @@ def buildVariablesMap = build.buildVariables
 String projectname = buildVariablesMap?.ProjectName
 
 
- job("${projectname}CodeStability") {
-  description('Code Stability for API')
+ job("${projectname}CodeDeploy") {
+  description("Code deploy for ${projectname}")
   logRotator {
         daysToKeep(60)
         numToKeep(20)
