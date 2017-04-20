@@ -4,7 +4,7 @@ def build = thr.executable
 def buildVariablesMap = build.buildVariables
 String projectname = buildVariablesMap?.ProjectName
 String appurl = buildVariablesMap?.AppURL
-String branch = buildVariablesMap?.Branch
+String gitbranch = buildVariablesMap?.GitBranch
 String gradletask = buildVariablesMap?.GradleTask
 
 
@@ -28,9 +28,9 @@ println jobName
       remote {
         url("$appurl")
       }
-      branch("*/master")
+       branch("$gitbranch")
      }
-   }  
+   }
   steps {
         gradle {
 
