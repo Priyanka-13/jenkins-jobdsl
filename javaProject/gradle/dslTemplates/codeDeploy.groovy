@@ -1,6 +1,6 @@
 
- job("${projectname}CodeDeploy") {
-  description("Code deploy for ${projectname}")
+ job("CodeDeploy") {
+  description("Code deploy Job ")
   logRotator {
         daysToKeep(60)
         numToKeep(20)

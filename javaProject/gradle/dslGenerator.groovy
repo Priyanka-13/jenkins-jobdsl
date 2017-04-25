@@ -31,4 +31,3 @@ new File("${WORKSPACE}/javaProject/gradle/dslTemplates").eachFile() { files2->
   }
 
 }
-
