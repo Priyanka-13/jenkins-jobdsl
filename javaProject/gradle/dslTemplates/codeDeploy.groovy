@@ -1,9 +1,3 @@
-def thr = Thread.currentThread()
-def build = thr.executable
-// get build parameters
-def buildVariablesMap = build.buildVariables
-String projectname = buildVariablesMap?.ProjectName
-
 
  job("${projectname}CodeDeploy") {
   description("Code deploy for ${projectname}")
