@@ -1,4 +1,4 @@
-job("DirectLoginCodeStabilityDsl") {
+job("${projectname}CodeStability") {
   description('Code Stability for API')
   
    logRotator {
