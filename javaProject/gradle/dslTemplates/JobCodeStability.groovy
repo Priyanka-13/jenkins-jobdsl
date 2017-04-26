@@ -1,26 +1,52 @@
- job("${projectname}CodeStability") {
+job("DirectLoginCodeStabilityDsl") {
   description('Code Stability for API')
-  logRotator {
+  
+   logRotator {
         daysToKeep(60)
         numToKeep(20)
         artifactDaysToKeep(1)
     }
+  
+  parameters {
+        activeChoiceParam('BRANCH') {
+             
+            groovyScript {
+            script('groovy script')
+            }
+       choiceType('SINGLE_SELECT')
+        }
+   
+     }
   scm {
      git {
       remote {
-        url("$appurl")
+        url("git@github.com:OpsTree/Spring3HibernateAppWithGradle.git")
       }
-       branch("$gitbranch")
+       branch('${BRANCH}')
      }
    }
+  
   steps {
         gradle {
 
            useWrapper false
             gradleName ( 'gradle-3.5' )
-            tasks ( "$gradletask" )
+            tasks ( "war" )
             buildFile ( 'build.gradle' )
 
         }
+    }
+  
+  steps {
+        shell(
+
+          'basePath=${JENKINS_HOME}/BUILDS \n' +
+          'repoName="web" \n' +
+          'branchName=$BRANCH \n' +
+          'mkdir -p ${basePath}/${repoName}/${branchName} \n' +
+          '#cp $WORKSPACE/build/lib/*war  ${basePath}/${repoName}/${branchName}/ \n' +
+          'touch ${basePath}/${repoName}/${branchName}/DirectLogin.war \n' 
+       )
+
     }
 }
