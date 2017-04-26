@@ -26,7 +26,7 @@ job("ci-creator") {
 
  steps {
       dsl  {
-            external('javaProject/gradle/DirectLogin/*.groovy')
+            external('javaProject/gradle/dslfiles/Job*.groovy')
             removeAction('IGNORE')
             
             
