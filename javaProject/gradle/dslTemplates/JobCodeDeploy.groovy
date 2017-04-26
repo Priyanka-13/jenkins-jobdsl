@@ -5,7 +5,7 @@ job("CodeDeploy") {
              
             groovyScript {
             fallbackScript('return["Script Error"]')
-            script('groovy script')
+            script('evaluate(new File("/var/lib/jenkins/scripts/getRepoList.groovy"))')
             }
        choiceType('SINGLE_SELECT')
         }
@@ -14,7 +14,8 @@ job("CodeDeploy") {
             
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('choice')
+		fallbackScript('return["Script Error"]')
+                script('evaluate(new File("/var/lib/jenkins/scripts/getBranchForRepo.groovy"))')
                
             }
             referencedParameter('REPOSITORY')
@@ -25,7 +26,8 @@ job("CodeDeploy") {
             
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('["choice"]')
+		fallbackScript('return["Script Error"]')
+                script('evaluate(new File("/var/lib/jenkins/scripts/getArtifactList.groovy"))')
                
             }
             referencedParameter('REPOSITORY,BRANCH')

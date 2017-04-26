@@ -8,14 +8,23 @@ job("${projectname}CodeStability") {
     }
   
   parameters {
-        activeChoiceParam('BRANCH') {
-             
+
+	    wHideParameterDefinition {
+               name('REPOSITORY')
+               defaultValue("${projectname}")
+               description('repository name')
+          }
+            activeChoiceReactiveParam('BRANCH') {
+
+            choiceType('SINGLE_SELECT')
             groovyScript {
-            script('groovy script')
+                fallbackScript('return["Script Error"]')
+                script('evaluate(new File("/var/lib/jenkins/scripts/getBranchForRepo.groovy"))')
+
             }
-       choiceType('SINGLE_SELECT')
+            referencedParameter('REPOSITORY')
+
         }
-   
      }
   scm {
      git {
