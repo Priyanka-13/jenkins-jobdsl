@@ -19,11 +19,11 @@ new File("/var/lib/jenkins/workspace/seedJob/javaProject/gradle/dslTemplates").e
     if(files.matches("Job(.*)")) {
         //println files
       
-        def file = new File("${WORKSPACE}/javaProject/gradle/dslTemplates/${files}")
+        def newfile = new File("${WORKSPACE}/javaProject/gradle/dslTemplates/${files}")
         def binding = ['projectname' : projectname , 'appurl' : appurl, 'gitbranch' : gitbranch, 'gradletask': gradletask ]
 
         def engine = new SimpleTemplateEngine()
-        def template = engine.createTemplate(file)
+        def template = engine.createTemplate(newfile)
         def writable = template.make(binding)
  
 	new File("${WORKSPACE}/javaProject/gradle/dslfiles","${files}").withWriter('utf-8') { 
