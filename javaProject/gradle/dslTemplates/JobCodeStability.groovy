@@ -40,12 +40,12 @@ job("DirectLoginCodeStabilityDsl") {
   steps {
         shell(
 
-          'basePath=${JENKINS_HOME}/BUILDS \n' +
+          'basePath=\${JENKINS_HOME}/BUILDS \n' +
           'repoName="web" \n' +
-          'branchName=$BRANCH \n' +
-          'mkdir -p ${basePath}/${repoName}/${branchName} \n' +
-          '#cp $WORKSPACE/build/lib/*war  ${basePath}/${repoName}/${branchName}/ \n' +
-          'touch ${basePath}/${repoName}/${branchName}/DirectLogin.war \n' 
+          'branchName=\$BRANCH \n' +
+          'mkdir -p \${basePath}/\${repoName}/\${branchName} \n' +
+          '#cp \$WORKSPACE/build/lib/*war  \${basePath}/\${repoName}/\${branchName}/ \n' +
+          'touch \${basePath}/\${repoName}/\${branchName}/DirectLogin.war \n' 
        )
 
     }
