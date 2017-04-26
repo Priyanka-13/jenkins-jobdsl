@@ -22,7 +22,7 @@ job("DirectLoginCodeStabilityDsl") {
       remote {
         url("git@github.com:OpsTree/Spring3HibernateAppWithGradle.git")
       }
-       branch('${BRANCH}')
+       branch('\${BRANCH}')
      }
    }
   
