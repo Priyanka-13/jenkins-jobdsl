@@ -8,9 +8,9 @@ def gitbranch = System.getenv("GitBranch")
 def gradletask = System.getenv("GradleTask")
 def WORKSPACE = System.getenv("WORKSPACE")
 
-println "$projectname"
+//println "$projectname"
 
-new File("${WORKSPACE}/javaProject/gradle/$projectname").mkdirs()  
+new File("${WORKSPACE}/javaProject/gradle/dslfiles").mkdirs()  
 
 
 new File("/var/lib/jenkins/workspace/seedJob/javaProject/gradle/dslTemplates").eachFile() { file->
@@ -26,7 +26,7 @@ new File("/var/lib/jenkins/workspace/seedJob/javaProject/gradle/dslTemplates").e
         def template = engine.createTemplate(file)
         def writable = template.make(binding)
  
-	new File("${WORKSPACE}/javaProject/gradle/${projectname}","${files}").withWriter('utf-8') { 
+	new File("${WORKSPACE}/javaProject/gradle/dslfiles","${files}").withWriter('utf-8') { 
 	         writer -> writer.write (writable) 
   }
  }
