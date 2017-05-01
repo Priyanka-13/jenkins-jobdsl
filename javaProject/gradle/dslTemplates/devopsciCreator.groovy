@@ -1,4 +1,4 @@
-job("ci-creator") {
+job("Devops-CI-creator") {
   parameters {
         stringParam('ProjectName', '', 'Name of the Project')
         stringParam('AppURL')
@@ -11,7 +11,7 @@ job("ci-creator") {
   scm {
      git {
       remote {
-        url("https://github.com/OpsTree/jenkins-jobdsl.git")
+        url("")
       }
        branch("*/master")
      }

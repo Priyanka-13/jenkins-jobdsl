@@ -29,9 +29,9 @@ job("${projectname}CodeStability") {
   scm {
      git {
       remote {
-        url("git@github.com:OpsTree/Spring3HibernateAppWithGradle.git")
+        url("${appurl}")
       }
-       branch('\${BRANCH}')
+       branch('\${gitbranch}')
      }
    }
   
@@ -40,7 +40,7 @@ job("${projectname}CodeStability") {
 
            useWrapper false
             gradleName ( 'gradle-3.5' )
-            tasks ( "war" )
+            tasks ( "${gradletask}" )
             buildFile ( 'build.gradle' )
 
         }
