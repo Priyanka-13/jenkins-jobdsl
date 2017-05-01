@@ -1,6 +1,6 @@
 listView("Devops-Jobs") {
             jobs {
-                names("Devops*")
+                names("DevopsDeploySSHKey", "Devops-CI-creator")
             }
             columns {
                 status()
