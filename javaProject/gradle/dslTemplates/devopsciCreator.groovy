@@ -11,7 +11,7 @@ job("Devops-CI-creator") {
   scm {
      git {
       remote {
-        url("")
+        url("https://github.com/OpsTree/jenkins-jobdsl.git")
       }
        branch("*/master")
      }
