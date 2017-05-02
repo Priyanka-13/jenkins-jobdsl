@@ -31,7 +31,7 @@ job("${projectname}CodeStability") {
       remote {
         url("${appurl}")
       }
-       branch("\${gitbranch}")
+       branch("${gitbranch}")
      }
    }
   
