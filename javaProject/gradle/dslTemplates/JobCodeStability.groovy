@@ -12,7 +12,7 @@ job("${projectname}CodeStability") {
 	    wHideParameterDefinition {
                name('REPOSITORY')
                defaultValue("${projectname}")
-               description('Repository name on bitbucket ex: \'web\'')
+               description('Repository name on bitbucket ex: web')
           }
             activeChoiceReactiveParam('BRANCH') {
 
