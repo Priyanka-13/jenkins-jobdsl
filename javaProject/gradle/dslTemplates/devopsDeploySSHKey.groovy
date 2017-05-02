@@ -1,5 +1,5 @@
 job("DevopsDeploySSHKey") {
-  description('Deploy key on Bitbucket into specific requirement.')
+  description('Deploy key on Bitbucket into specific repository.')
   
    logRotator {
         daysToKeep(60)
