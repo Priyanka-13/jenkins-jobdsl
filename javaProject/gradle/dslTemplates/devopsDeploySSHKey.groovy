@@ -10,18 +10,18 @@ job("DevopsDeploySSHKey") {
   parameters {
 
             activeChoiceReactiveParam('RepositoryName') {
-
-            choiceType('SINGLE_SELECT')
-            groovyScript {
-                fallbackScript('return["Script Error"]')
-                script('evaluate(new File("evaluate(new File("/var/lib/jenkins/scripts/getRepoList.groovy"))"))')
+	    	description('List of repositories. This will get evaluated automatically.')
+            	choiceType('SINGLE_SELECT')
+            	groovyScript {
+                	fallbackScript('return["Script Error"]')
+                	script('evaluate(new File("/var/lib/jenkins/scripts/getRepoList.groovy"))')
 
             }
 
         }
     		fileParam {
-					name('SSHKeyFile')
-					description('Please include your ssh file which we be deployed to the Bitbucket Repo.')
+	 		name('SSHKeyFile')
+			description('Please include your ssh file which we be deployed to the Bitbucket Repo.')
 		}
 
      }

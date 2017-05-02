@@ -12,20 +12,19 @@ job("${projectname}CodeStability") {
 	    wHideParameterDefinition {
                name('REPOSITORY')
                defaultValue("${projectname}")
-               description('repository name')
+               description('Repository name on bitbucket ex: \'web\'')
           }
             activeChoiceReactiveParam('BRANCH') {
 
-            choiceType('SINGLE_SELECT')
-            groovyScript {
-                fallbackScript('return["Script Error"]')
-                script('evaluate(new File("/var/lib/jenkins/scripts/getBranchForRepo.groovy"))')
-
+               choiceType('SINGLE_SELECT')
+               groovyScript {
+                  fallbackScript('return["Script Error"]')
+                  script('evaluate(new File("/var/lib/jenkins/scripts/getBranchForRepo.groovy"))')
+               }
+	       description('This get evaluated automatically. Shows the list of available braches in your project repository.')
+               referencedParameter('REPOSITORY')
             }
-            referencedParameter('REPOSITORY')
-
-        }
-     }
+ }
   scm {
      git {
       remote {

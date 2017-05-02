@@ -7,7 +7,8 @@ job("CodeDeploy") {
             fallbackScript('return["Script Error"]')
             script('evaluate(new File("/var/lib/jenkins/scripts/getRepoList.groovy"))')
             }
-       choiceType('SINGLE_SELECT')
+	    description('The list of repository get evaluated automatically')
+            choiceType('SINGLE_SELECT')
         }
     
    activeChoiceReactiveParam('BRANCH') {
@@ -18,6 +19,7 @@ job("CodeDeploy") {
                 script('evaluate(new File("/var/lib/jenkins/scripts/getBranchForRepo.groovy"))')
                
             }
+	    description('The list of brncahes as per selection of repository get evaluated automatically')
             referencedParameter('REPOSITORY')
             
         }
@@ -30,12 +32,13 @@ job("CodeDeploy") {
                 script('evaluate(new File("/var/lib/jenkins/scripts/getArtifactList.groovy"))')
                
             }
+	    description('The list of artifact got evaluated automatically on basis of repo and branch')
             referencedParameter('REPOSITORY,BRANCH')
             
         }
     
     
-       choiceParam('Environment', ['Dev', 'QA', 'Production'])
+       choiceParam('Environment', ['Dev', 'QA', 'Production'], 'Target environment to deploy artifact')
     }
   
   steps {
